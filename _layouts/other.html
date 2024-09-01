@@ -8,6 +8,17 @@ layout: default
 
 {{ content }}
 
+<h2>Sorrento Meetings</h2>
+<ul>
+  {% for repository in sorted reversed %}{% if repository.has_pages %}{% unless repository.name contains 'github.io' %}{% if repository.name contains "sorrento" %}
+  <li>
+    <a href="{{ repository.name | prepend: "/" | prepend: site.url | append: "/"  }}"><b>{{ site.style | upcase }} {{ repository.name | remove_first: site.style }}</b></a> {{ repository.description }} 
+  </li>
+    {% endif %}{% endunless %}{% endif %}{% endfor %}    
+  <br>
+</ul>
+
+<h2>DALI Meetings</h2>
 <ul>
   {% for repository in sorted reversed %}{% if repository.has_pages %}{% unless repository.name contains 'github.io' %}{% if repository.name contains site.style %}
   <li>
@@ -16,4 +27,5 @@ layout: default
     {% endif %}{% endunless %}{% endif %}{% endfor %}    
   <br>
 </ul>
+
 
